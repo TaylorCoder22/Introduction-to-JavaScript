@@ -17,6 +17,10 @@ Do the following:
 
    HINT: no function required
 */
+var votingAge = 19;
+if(votingAge > 18){
+  console.log(true);
+}
 
 
 
@@ -30,6 +34,11 @@ Do the following:
 
    HINT: no function required
 */
+var myVariable = 22
+var myVariable2 = 30
+if (myVariable >= 22){
+  console.log(myVariable2(30));
+}
 
 
 
@@ -45,8 +54,10 @@ Do the following:
 
    HINT: look up the Number method
 */
+const year = '1999';
 
-
+Number('1999');
+console.log(1999);
 
 
 /*
@@ -57,11 +68,12 @@ Do the following:
    2. Receive the parameters: a and b
    3. Multiply a and b and return the answer
 */
-
-function multiply(/*add your code here*/){
-    /*add your code here*/
+const a = 10;
+const b = 15;
+function multiply(a = 10, b = 15){
+    return a * b;
   }
-
+console.log(multiply(10,15))
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -73,11 +85,11 @@ Do the following:
    2. Use the received value to calculate the age in dog years (1 human year is equal to 7 dog years)
    3. Return the newly calculated age
 */
-
-function dogYears(/*add your code here*/){
-    /*add your code here*/
+const humanYears = 10;
+function dogYears(humanYears = 10,  dogYears = 7){
+    return humanYears * dogYears;
 }
-
+console.log(dogYears(10,7));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -107,10 +119,19 @@ Use the hungryDog function and feeding requirements below to do the following:
   NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
-    /*add your code here*/
+function hungryDog(weight, age){
+    //calculation for adult dog
+    if(weight <= 5 && age >= 1){
+      return  weight * .005;
+    } else if(weight <= 6 && weight >= 10 && age >=1){
+              return weight * .004;
+    } else if(weight <= 11 && weight >= 15 && age >=1){
+              return weight * .003;
+    } else if (weight <= 15 && age >= 1){
+              return weight * .02;
+    }
   }
-
+console.log(hungryDogs(15,1))
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -135,7 +156,48 @@ Use the game function below to do the following:
 */
 
 function game(user, computer){
-    /*add your code here*/
+  var userChoice = prompt("Do you choose rock, paper or scissors?");
+  var computerChoice = Math.random();
+  if (computerChoice < 0.34) {
+      computerChoice = "rock";
+  } else if(computerChoice <= 0.67) {
+      computerChoice = "paper";
+  } else {
+      computerChoice = "scissors";
+  }
+  
+  var compare = function(choice1, choice2) {
+      if(choice1 === choice2) {
+      return "The result is a tie!";
+  }
+  if(choice1 === "rock") {
+      if(choice2 === "scissors") {
+          return "rock wins";
+      } else {
+          return "paper wins";
+      }
+  }
+    if (choice1 === "paper") {
+      if (choice2 === "rock") {
+          return "paper wins";
+      } else {
+          if (choice2 === "scissors") {
+              return "scissors wins";
+          }
+      }
+      if (choice1 === "scissors") {
+          if (choice2 === "rock") {
+              return "rock wins";
+          } else {
+              if (choice2 === "paper") {
+                  return "scissors wins";
+              }
+          }
+      }
+    }
+    console.log("User Choice: " + userChoice);
+    console.log("Computer Choice: " + computerChoice);
+    compare(userChoice, computerChoice);
 }
   
   
@@ -150,11 +212,12 @@ Using the miles function below do the following:
   2. Convert the number of kiolmeters received to miles
   3. Return the number of miles
 */
-
-function miles(/*add your code here*/){
-    /*add your code here*/
+const kilometers = 16.25;
+const factor = 0.621371;
+function miles(kilometers = 16.25, factor = 0.621371){
+    return kilometers * factor;
   }
-
+console.log(miles(16.25, 0.621371));
 
 
 //Task 5b - Feet to CM
@@ -164,11 +227,12 @@ Using the feet function below do the following:
   2. Convert the number of cm to feet
   3. Return number of feet
 */
-
-function feet(/*add your code here*/){
-    /*add your code here*/
+const cm = 305;
+const foot = 0.0328084;
+function feet(cm = 305, foot = 0.0328084){
+    return cm * foot;
   }
- 
+ console.log(feet(305, 0.0328084))
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -181,8 +245,26 @@ Using the annoyingSong function below do the following:
       "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-        /*add your code here*/
+function annoyingSong(repeat){
+  var bottles;
+  for (counter = 99; counter >= 1; counter = counter - 1) 
+  {
+      if (counter == 1) {
+          bottles = 'bottle';
+      } else {
+          bottles = 'bottles';
+      }
+      console.log(counter+" "+bottles+" of beer on the wall.");
+      if (counter < 99) {
+          console.log("");
+          console.log(counter+" "+bottles+" of beer on the wall.");
+      }
+      console.log(counter+" "+bottles+" of beer.");
+      console.log("Take one down.");
+      console.log("Pass it around.");
+      if (counter == 1) {
+          console.log("No bottles of beer on the wall.");
+      }
   }
 
 
@@ -200,10 +282,22 @@ Using the grade function below do the following:
    60-69 should return 'you got a D'
    below should return 'you got an F'
 */
-  
-function grade(/*Your Code here */){
-  /*Your Code here */
+var score = 100;
+var letterDisplay = document.getElementById('letter'); 
+function grade(score = 100){
+  if(score >= 90){
+    return letterDisplay.value = "A";
+  }else if(score >= 80 && score <= 89){
+    return letterDisplay.value = "B";
+  }else if(score >= 70 && score <= 79){
+    return letterDisplay.value = "C";
+  }else if(score >= 60 && score <= 69){
+   return letterDisplay.value = "D";
+  }else if(score >= 0 && score <= 59){
+    return letterDisplay.value = "F";
   }
+console.log(score, letterDisplay);
+  
   
   
 
@@ -219,10 +313,20 @@ Using the vowelCounter function below do the following:
   HINT - try looking up the .includes() method
 */
 
-
-function vowelCounter(/*add your code here*/) {
-    /*add your code here*/
+const string = 'JavaScript is my Kryptonite and what my nightmares are made of.'
+function vowelCounter() {
+  var vowel_list = 'aeiouAEIOU';
+  var vowelCount = 0;
+  
+  for(var x = 0; x < str1.length ; x++)
+  {
+    if (vowel_list.indexOf(str1[x]) !== -1)
+    {
+      vowelCount += 1;
+    }
+    return vowelCount;
 }
+console.log(string('JavaScript is my Kryptonite and what my nightmares are made of.'));
 
 
 
